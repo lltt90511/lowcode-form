@@ -1,0 +1,13 @@
+.main {
+  display: flex;
+  flex-direction: column;
+
+  .left {
+    width: 300px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .middle {
+    flex: 1;
+  }
+}
