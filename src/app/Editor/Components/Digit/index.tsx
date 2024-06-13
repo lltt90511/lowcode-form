@@ -1,10 +1,14 @@
-import { FormProps } from "@/Interface/Component"
-import { ProFormDigit } from "@ant-design/pro-components"
+import { Form, InputNumber } from "antd";
+
+import { FormProps } from "@/interface/formItem";
 
 export default (props: FormProps) => {
   const { name = '', label = '' } = props;
-  return <ProFormDigit 
+  return <Form.Item
+    label={label} 
     name={name}
-    label={label}
-  />
+    style={{marginBottom: 0}}
+  >
+    <InputNumber style={{width: '100%'}} />
+  </Form.Item>
 }

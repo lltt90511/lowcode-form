@@ -1,7 +1,9 @@
-export const enum ComponentType {
+import { Property } from '@/../csstype/index';
+
+export const enum FormType {
   TITLE = 'Title',
   LABEL = 'label',
-  Digit = 'Digit',
+  DIGIT = 'Digit',
   TEXT = 'Text',
   TEXTAREA = 'TextArea',
   SELECT = 'Select',
@@ -10,22 +12,27 @@ export const enum ComponentType {
 }
 
 export interface DefaultProps {
-  type: ComponentType;
+  type: FormType;
+  id: string;
 }
 
 export interface TitleProps {
-  text: string; 
+  text?: string; 
+  textAlign?: Property.TextAlign;
+  fontSize?: string;
 }
 
 export interface LabelProps {
-  text: string; 
+  text?: string; 
 }
 
 export interface FormProps {
-  name: string;
+  name?: string;
   label?: string;
 }
 
 export interface SelectProps {
   valueNum?: Record<string, string>;
 }
+
+export type Props = DefaultProps & TitleProps & LabelProps & FormProps & SelectProps;

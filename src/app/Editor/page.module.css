@@ -1,13 +1,35 @@
 .main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  background-color: #f0f2f5;
+  height: 100vh;
+  padding: 10px 20px;
+}
 
-  .left {
-    width: 300px;
-    border: 1px solid #e5e7eb;
-  }
+.left {
+  width: 300px;
+  height: 100%;
+  border: 1px solid #e5e7eb;
+}
 
-  .middle {
-    flex: 1;
-  }
+.middle {
+  flex: 1;
+  overflow: hidden;
+}
+
+.content {
+  width: 500px;
+  height: 800px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  transform: translateX(-50%) translateY(-50%);
+  overflow: auto;
+}
+
+.right {
+  width: 300px;
+  height: 100%;
+  border: 1px solid #e5e7eb;
 }
