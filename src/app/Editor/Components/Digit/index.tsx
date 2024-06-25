@@ -2,16 +2,22 @@ import { Form, InputNumber } from "antd";
 
 import { DigitProps, FormProps, FormType } from "@/interface/formItem";
 import { FC } from "react";
-import { ProFormSelect } from "@ant-design/pro-components";
+import { ProForm, ProFormDigit, ProFormSelect, ProFormText } from "@ant-design/pro-components";
 
 const formItem: FC<FormProps> = (props) => {
-  const { name = '', label = '' } = props;
-  return <InputNumber style={{width: '100%'}} />
+  const { name = '', label = '', ...reset } = props;
+  return <Form.Item
+    label={label} 
+    name={name}
+    style={{marginBottom: 0}}
+  >
+    <InputNumber {...reset} style={{width: '100%'}} />
+  </Form.Item>
 }
 
 const formProps: FormProps & DigitProps = {
-  name: '',
-  label: '',
+  name: 'name',
+  label: '数字',
   size: 'small',
   max: 1,
   min: 0
@@ -19,16 +25,26 @@ const formProps: FormProps & DigitProps = {
 
 const optionItem: FC = () => {
   return <>
+    <ProFormText 
+      name='name'
+      label='名称'
+    />
     <ProFormSelect 
-      name='fontSize'
-      label='字体大小'
+      name='size'
+      label='大小'
       valueEnum={{
-        12: '12',
-        13: '13',
-        14: '14',
-        15: '15',
-        16: '16',
+        small: 'small',
+        middle: 'middle',
+        large: 'large'
       }}
+    />
+    <ProFormDigit
+      name='max'
+      label='最大值'
+    />
+    <ProFormDigit
+      name='min'
+      label='最小值'
     />
   </>
 }

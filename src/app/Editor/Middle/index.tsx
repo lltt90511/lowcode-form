@@ -1,21 +1,20 @@
-import { FormItemData } from "@/interface/formItem";
-import { StateType } from "@/store";
+import MiddleItem from "@/components/MiddleItem";
+import useFormList from "@/hooks/useFormList";
 import { getItemByType } from "@/utils/utils";
-import { useSelector } from "react-redux";
 
 export default () => {
-  const formList = useSelector<StateType>(
-    state => state.formItems.formList
-  ) as FormItemData[];
-  console.log('--->', formList)
+  const formList = useFormList();
   return <div>
     {
       formList?.map((form) => {
         const item = getItemByType(form.type);
-        const FormItem = item.formItem;
-        return <div key={form.id}>
-          <FormItem {...form.defaultProps || {}}/>
-        </div>
+        return item && <MiddleItem
+          key={form.id}
+          type = {item.type}
+          id = {form.id}
+          formProps = {form.formProps}
+          FormItem = {item.formItem}
+        />
       })
     }
   </div>

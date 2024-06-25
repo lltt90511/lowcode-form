@@ -47,12 +47,28 @@ const formItemsSlice = createSlice({
           state.curSelectId = '';
         }
       },
+      // 选中 id为空则是取消选中
+      selectFormItem: (state, action) => {
+        state.curSelectId = action?.payload;
+      },
+      // 更新props
+      updateFormItemProps: (state, action) => {
+        const formItem = state?.formList?.find(c => c.id === state.curSelectId);
+        if (!!formItem) {
+          formItem.formProps = {
+            ...formItem.formProps,
+            ...action?.payload
+          }
+        }
+      }
   },
 });
 
 export const {
   addFormItem,
-  removeFormItem
+  removeFormItem,
+  selectFormItem,
+  updateFormItemProps
 } = formItemsSlice.actions;
 
 export default formItemsSlice.reducer;

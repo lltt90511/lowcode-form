@@ -37,7 +37,7 @@ export default () => {
           </div>
         </div>
         <div className={styles.right}>
-          {/* <Right /> */}
+          <Right />
         </div>
       </div>
     </PageContainer>

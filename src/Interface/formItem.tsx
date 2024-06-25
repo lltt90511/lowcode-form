@@ -1,5 +1,7 @@
 import { Property } from '@/../csstype/index';
 
+export type UNKNOW = undefined | null | unknown;
+
 export const enum FormType {
   TITLE = 'Title',
   LABEL = 'Label',
@@ -16,14 +18,10 @@ export type DefaultProps = {
   id: string;
 }
 
-export type TitleProps = {
+export type TextProps = {
   text?: string; 
   textAlign?: Property.TextAlign;
   fontSize?: string;
-}
-
-export type LabelProps = {
-  text?: string; 
 }
 
 export type FormProps = {
@@ -31,18 +29,18 @@ export type FormProps = {
   label?: string;
 }
 
-export type DigitProps = {
-  fontSize?: string;
+export type DigitProps = FormProps & {
+  size?: string;
+  max?: number;
+  min?: number;
 }
 
-export type SelectProps = {
+export type SelectProps = FormProps & {
   valueNum?: Record<string, string>;
 }
 
-export type Props = TitleProps & LabelProps & FormProps & DigitProps & SelectProps;
+export type Props = TextProps & DigitProps & SelectProps;
 
-export type FormItemData = {
-  type: FormType,
-  id: string,
-  defaultProps?: Props
+export type FormItemData = DefaultProps & {
+  formProps?: Props
 }

@@ -1,11 +1,12 @@
 import { ProCard } from "@ant-design/pro-components"
-import DefaultComponent from "@/components/DefaultComponent"
+import LeftItem from "@/components/LeftItem"
 import { Typography } from "antd"
 import { FormList, TextList } from "./data"
 
 export default () => {
   return <ProCard
     title='组件列表'
+    headerBordered
     bordered
     headStyle={{padding: '10px'}}
     bodyStyle={{padding: '10px'}}
@@ -14,7 +15,7 @@ export default () => {
       文本
     </Typography.Title>
     {
-      TextList.map((item) => <DefaultComponent
+      TextList.map((item) => <LeftItem
         key={item.type}
         type = {item.type}
         formProps = {item.formProps}
@@ -25,7 +26,7 @@ export default () => {
       输入
     </Typography.Title>
     {
-      FormList.map((item) => <DefaultComponent
+      FormList.map((item) => <LeftItem
         key={item.type}
         type = {item.type}
         formProps = {item.formProps}

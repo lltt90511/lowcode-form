@@ -13,27 +13,25 @@ import styles from './index.module.css';
 type IProps = {
   type?: FormType;
   formProps?: Props;
-  FormItem?: FC;
+  FormItem?: FC<Props>;
 }
 
 export default (props: IProps) => {
-  const { type = FormType.DIGIT, formProps = {}, FormItem = () => <div/> } = props;
+  const { type = FormType.DIGIT, formProps = {}, FormItem = null } = props;
   
-  console.log('type-->', type, formProps)
   const dispatch = useDispatch();
 
   const onClick = () => {
-    console.log('type--->',type)
     dispatch(addFormItem({
       type,
       id: nanoid(),
-      formProps
+      formProps: formProps
     }))
   }
 
   return <div key={type} className={styles.main} onClick={onClick}>
     <div className={styles.component}>
-      <FormItem />
+      {FormItem && <FormItem {...formProps}/>}
     </div>
   </div>
 }

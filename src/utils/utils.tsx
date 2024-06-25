@@ -1,9 +1,9 @@
 import Digit from "@/app/Editor/Components/Digit";
 import Title from "@/app/Editor/Components/Title";
-import { FormType } from "@/interface/formItem";
+import { FormType, UNKNOW } from "@/interface/formItem";
 
-export const getItemByType = (type: FormType) => {
-  let formItem;
+export const getItemByType = (type: FormType | UNKNOW) => {
+  let formItem = null;
   switch(type) {
     case FormType.TITLE:
       formItem = Title;
@@ -24,5 +24,5 @@ export const getItemByType = (type: FormType) => {
     case FormType.SELECT:
       break;
   }
-  return formItem || Title;
+  return formItem;
 } 
