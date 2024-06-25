@@ -2,7 +2,7 @@ import { Property } from '@/../csstype/index';
 
 export const enum FormType {
   TITLE = 'Title',
-  LABEL = 'label',
+  LABEL = 'Label',
   DIGIT = 'Digit',
   TEXT = 'Text',
   TEXTAREA = 'TextArea',
@@ -11,28 +11,38 @@ export const enum FormType {
   CHECKBOX = 'CheckBox'
 }
 
-export interface DefaultProps {
+export type DefaultProps = {
   type: FormType;
   id: string;
 }
 
-export interface TitleProps {
+export type TitleProps = {
   text?: string; 
   textAlign?: Property.TextAlign;
   fontSize?: string;
 }
 
-export interface LabelProps {
+export type LabelProps = {
   text?: string; 
 }
 
-export interface FormProps {
+export type FormProps = {
   name?: string;
   label?: string;
 }
 
-export interface SelectProps {
+export type DigitProps = {
+  fontSize?: string;
+}
+
+export type SelectProps = {
   valueNum?: Record<string, string>;
 }
 
-export type Props = DefaultProps & TitleProps & LabelProps & FormProps & SelectProps;
+export type Props = TitleProps & LabelProps & FormProps & DigitProps & SelectProps;
+
+export type FormItemData = {
+  type: FormType,
+  id: string,
+  defaultProps?: Props
+}

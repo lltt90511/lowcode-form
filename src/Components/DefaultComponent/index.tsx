@@ -10,23 +10,25 @@ import { addFormItem } from '@/store/formItemReducer';
 
 import styles from './index.module.css';
 
-interface IProps {
+type IProps = {
   type?: FormType;
-  defaultProps?: Props;
+  formProps?: Props;
   FormItem?: FC;
 }
 
 export default (props: IProps) => {
-  const { type = FormType.DIGIT, defaultProps = {}, FormItem = () => <div/> } = props;
+  const { type = FormType.DIGIT, formProps = {}, FormItem = () => <div/> } = props;
   
-  // const dispatch = useDispatch();
+  console.log('type-->', type, formProps)
+  const dispatch = useDispatch();
 
   const onClick = () => {
-    // dispatch(addFormItem({
-    //   type,
-    //   id: nanoid(),
-    //   defaultProps
-    // }))
+    console.log('type--->',type)
+    dispatch(addFormItem({
+      type,
+      id: nanoid(),
+      formProps
+    }))
   }
 
   return <div key={type} className={styles.main} onClick={onClick}>

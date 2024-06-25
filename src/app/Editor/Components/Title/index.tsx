@@ -1,8 +1,15 @@
 import { DefaultProps, FormType, TitleProps } from "@/interface/formItem";
+import { ProFormSelect, ProFormText } from "@ant-design/pro-components";
 
-import { Typography } from "antd";
+import { Form, Typography } from "antd";
 
 import { FC } from "react";
+
+const formProps: TitleProps = {
+  text: '这是标题',
+  textAlign: 'left',
+  fontSize: '28'
+}
 
 const formItem: FC<TitleProps> = (props) => {
   const { text = '这是标题', textAlign = 'left', fontSize = '28' } = props;
@@ -12,16 +19,40 @@ const formItem: FC<TitleProps> = (props) => {
   </Typography.Title> 
 }
 
-const defaultProps: DefaultProps & TitleProps = {
-  type: FormType.TITLE,
-  id: '',
-  text: '这是标题',
-  textAlign: 'left',
-  fontSize: '28'
+const optionItem: FC = () => {
+  return <>
+    <ProFormText 
+      name='text'
+      label='内容'
+    />
+    <ProFormSelect 
+      name='textAlign'
+      label='对齐方式'
+      valueEnum={{
+        left: 'left',
+        center: 'center',
+        right: 'right'
+      }}
+    />   
+    <ProFormSelect 
+      name='fontSize'
+      label='字体大小'
+      valueEnum={{
+        24: '24',
+        25: '25',
+        26: '26',
+        27: '27',
+        28: '28',
+        29: '29',
+        30: '30'
+      }}
+    />
+  </>
 }
 
 export default {
   type: FormType.TITLE,
+  formProps,
   formItem,
-  defaultProps
+  optionItem
 }

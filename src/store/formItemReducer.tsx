@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { DefaultProps } from "../interface/formItem";
+import { FormItemData } from "../interface/formItem";
 
 const enum StateType {
   NULL = 'null',
@@ -12,10 +12,10 @@ const enum StateType {
   SELECT = 'select'
 }
 
-interface FormState {
+export interface FormState {
   type: StateType,
   curSelectId: string,
-  formList: DefaultProps[]
+  formList: FormItemData[]
 }
 
 const initialState: FormState = {
@@ -35,7 +35,7 @@ const formItemsSlice = createSlice({
         if (index < 0) {
           state?.formList?.push(action.payload)
         } else {
-          state?.formList?.splice(index + 1, action.payload);
+          state?.formList?.splice(index + 1, 0, action.payload);
         }
         state.curSelectId = action?.payload?.id;
       },
