@@ -2,7 +2,7 @@ import { Form, InputNumber } from "antd";
 
 import { DigitProps, FormProps, FormType } from "@/interface/formItem";
 import { FC } from "react";
-import { ProForm, ProFormDigit, ProFormSelect, ProFormText } from "@ant-design/pro-components";
+import { ProFormDigit, ProFormSelect, ProFormText } from "@ant-design/pro-components";
 
 const formItem: FC<FormProps> = (props) => {
   const { name = '', label = '', ...reset } = props;

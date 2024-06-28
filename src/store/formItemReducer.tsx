@@ -60,6 +60,11 @@ const formItemsSlice = createSlice({
             ...action?.payload
           }
         }
+      },
+      // 重置
+      resetForm: (state, action) => {
+        state.formList = [];
+        state.curSelectId = '';
       }
   },
 });
@@ -68,7 +73,8 @@ export const {
   addFormItem,
   removeFormItem,
   selectFormItem,
-  updateFormItemProps
+  updateFormItemProps,
+  resetForm
 } = formItemsSlice.actions;
 
 export default formItemsSlice.reducer;

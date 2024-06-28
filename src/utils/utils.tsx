@@ -1,6 +1,6 @@
 import Digit from "@/app/Editor/Components/Digit";
 import Title from "@/app/Editor/Components/Title";
-import { FormType, UNKNOW } from "@/interface/formItem";
+import { FormItemData, FormType, UNKNOW } from "@/interface/formItem";
 
 export const getItemByType = (type: FormType | UNKNOW) => {
   let formItem = null;
@@ -26,3 +26,29 @@ export const getItemByType = (type: FormType | UNKNOW) => {
   }
   return formItem;
 } 
+
+export const getFormItemByData = (data: FormItemData) => {
+  let formItem;
+  const { type = FormType.LABEL, id = '', formProps = {} } = data;
+  switch(type) {
+    case FormType.TITLE:
+      formItem = <Title.formItem key={id} {...formProps} />;
+      break;
+    case FormType.LABEL:
+      break;
+    case FormType.TEXT:
+      break;
+    case FormType.TEXTAREA:
+      break;
+    case FormType.DIGIT:
+      formItem = <Digit.formItem key={id} {...formProps} />;
+      break;
+    case FormType.RADIO:
+      break;
+    case FormType.CHECKBOX:
+      break;
+    case FormType.SELECT:
+      break;
+  }
+  return formItem;
+}
